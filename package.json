@@ -1,0 +1,39 @@
+{
+    "name": "nuckty-ext-command-serve",
+    "version": "1.0.0-beta1",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:nuckty/nuckty-ext-command-serve.git"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "description": "nuckty command-extension: serve the built site locally + stop",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rm -rf dist && tsc -p config/config-ts.json",
+        "test": "tsx --test src/test/**/*.test.ts",
+        "lint": "tsc --noEmit -p config/config-ts-test.json",
+        "prepack": "npm run build"
+    },
+    "devDependencies": {
+        "@types/node": "24.13.3",
+        "nuckty": "file:../nuckty",
+        "tsx": "4.23.12",
+        "typescript": "7.0.2"
+    },
+    "files": [
+        "dist"
+    ],
+    "peerDependencies": {
+        "nuckty": "1.0.0-beta1"
+    },
+    "author": {
+        "name": "Vitaly Harisov",
+        "email": "vitaly@harisov.name"
+    }
+}
+
