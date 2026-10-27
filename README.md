@@ -1,4 +1,4 @@
-# nuckty-ext-command-serve
+# @nuckty/ext-command-serve
 
 Serve a built nuckty target locally through nginx. The extension registers `serve` and `stop` through `env.commands`.
 
@@ -6,14 +6,14 @@ The process lifecycle uses POSIX tools (`which`, `ps`, signals). Native Windows 
 
 ## Usage
 
-Install as a devDependency and add `'nuckty-ext-command-serve'` to `ext` in `config-nuckty.ts`. A built target and `nginx` in `PATH` are required.
+Install as a devDependency and add `'@nuckty/ext-command-serve'` to `ext` in `config-nuckty.ts`. A built target and `nginx` in `PATH` are required.
 
 ```bash
-npx nuckty build
-npx nuckty serve            # http://127.0.0.1:8080
-# Or: npx nuckty serve --port 8081
+npx @nuckty/core build
+npx @nuckty/core serve            # http://127.0.0.1:8080
+# Or: npx @nuckty/core serve --port 8081
 # In a second terminal in the same directory:
-npx nuckty stop
+npx @nuckty/core stop
 ```
 
 `nuckty serve [target] [--port N]` selects the target, checks its HTML directory, writes `.build/nginx-serve.conf` for that artifact, and starts nginx in the foreground. It binds to loopback; the default port is 8080. The runtime configuration uses the core hosting generator for routing, compression and image negotiation.
@@ -33,4 +33,3 @@ See the core `ext-command-serve` specification in `openspec/specs/ext-command-se
 MIT.
 
 Native command integration tests require the runtime on PATH and run with `NUCKTY_SERVE_NATIVE=1 npm test`. CI requires this mode; the native scenario is explicitly skipped otherwise.
-

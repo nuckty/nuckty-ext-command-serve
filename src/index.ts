@@ -2,7 +2,7 @@ import { execFile, spawn } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
-import type { NucktyEnv, CommandArgs } from 'nuckty';
+import type { NucktyEnv, CommandArgs } from '@nuckty/core';
 
 /**
  * The pid file for a project: `<buildDir>/nginx.pid` — the same path the
@@ -32,7 +32,7 @@ export async function serve(args: CommandArgs, runtime: {
             throw new Error('Port must be an integer between 1 and 65535');
         }
 
-        const { resolveTarget, generateNginxConfig, assertArtifactPath } = await import('nuckty');
+        const { resolveTarget, generateNginxConfig, assertArtifactPath } = await import('@nuckty/core');
         const target = resolveTarget(args.config, args.positional[0]);
         const outDir = path.resolve(args.cwd, target.outDir);
         await fs.access(path.join(outDir, 'html'));

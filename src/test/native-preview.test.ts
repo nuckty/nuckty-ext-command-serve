@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createServer } from 'node:net';
 import { spawn, spawnSync, type ChildProcess, type SpawnOptions } from 'node:child_process';
-import { runBuild, type CommandArgs } from 'nuckty';
+import { runBuild, type CommandArgs } from '@nuckty/core';
 import { serve, stop } from '../index.js';
 
 test('native preview serves a rebuild and stops its own nginx from a Unicode path', {

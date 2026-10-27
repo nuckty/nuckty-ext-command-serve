@@ -1,17 +1,17 @@
-# nuckty-ext-command-serve
+# @nuckty/ext-command-serve
 
 Локальная раздача собранного таргета nuckty через nginx. Расширение регистрирует `serve` и `stop` через `env.commands`.
 
 ## Использование
 
-Установите как devDependency и добавьте `'nuckty-ext-command-serve'` в `ext` файла `config-nuckty.ts`. Требуются собранный таргет и `nginx` в `PATH`.
+Установите как devDependency и добавьте `'@nuckty/ext-command-serve'` в `ext` файла `config-nuckty.ts`. Требуются собранный таргет и `nginx` в `PATH`.
 
 ```bash
-npx nuckty build
-npx nuckty serve            # http://127.0.0.1:8080
-# Или: npx nuckty serve --port 8081
+npx @nuckty/core build
+npx @nuckty/core serve            # http://127.0.0.1:8080
+# Или: npx @nuckty/core serve --port 8081
 # Во втором терминале из того же каталога:
-npx nuckty stop
+npx @nuckty/core stop
 ```
 
 `nuckty serve [target] [--port N]` выбирает таргет, проверяет его каталог HTML, записывает `.build/nginx-serve.conf` для этого артефакта и запускает nginx на переднем плане. Сервер слушает loopback; порт по умолчанию — 8080. Для маршрутизации, сжатия и согласования изображений используется генератор конфигурации хостинга из ядра.
@@ -33,4 +33,3 @@ MIT.
 Управление процессом использует инструменты POSIX (`which`, `ps`, сигналы). Работа в Windows без окружения POSIX не проверена.
 
 Интеграционные проверки команд с настоящим рантаймом в PATH запускаются через `NUCKTY_SERVE_NATIVE=1 npm test`. В CI этот режим обязателен; иначе сценарий с настоящим процессом явно пропускается.
-

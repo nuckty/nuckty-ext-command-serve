@@ -4,7 +4,7 @@ import { mkdtemp, rm, writeFile, mkdir, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { killNginxByPid, pidFileFor, stop, type KillSpawn } from '../index.js';
-import type { CommandArgs } from 'nuckty';
+import type { CommandArgs } from '@nuckty/core';
 
 for (const outcome of ['success', 'error', 'denied', 'unrelated', 'reused', 'invalid', 'absent'] as const) {
     test(`stop: ${outcome} has truthful result and preserves nginx-owned pid file`, async () => {
@@ -310,4 +310,3 @@ test('serve retains a symbolic consumer root while guarding real output paths', 
         await rm(parent, { recursive: true, force: true });
     }
 });
-
